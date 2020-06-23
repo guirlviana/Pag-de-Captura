@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROCESSO SELETIVO - PROCOBAJA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../PROCOBAJA/images/IMG_6710.JPG" type="image/jpg">
+    <style>
+
+
+input.valid {
+  border-bottom: 1px solid greenyellow;
+ box-shadow: 1 0 5px greenyellow;
+}
+
+input.invalid {
+  border-bottom: 1px solid red;
+  box-shadow: 1 0 5px red;
+}
+
+    </style>
+</head>
+<body>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="jquery.mask.js"></script>
+    <div class="container">
+        <header>
+            <h1 style=" text-decoration: underline;">Processo seletivo PROCOBAJA</h1>
+            <p>A equipe PROCOBAJA é uma das participantes do programa estudantil BAJA SAE promovido pela SAE Brasil (Sociedade de Engenheiros da Mobilidade), entidade sem fins lucrativos associada a SAE Internacional. </p>
+           
+        </header>
+        <section>
+        <div class="formContainer">    
+            <main>
+                <p id="subtitle" style=" text-decoration: underline;">Inscreva-se</p>
+                <form>
+                    <div class="informs">
+                    <input id="name" name="name" type="text" placeholder="Nome*" autocomplete="off" onblur="verifica(this.value)">
+                    <input id="email" name="email" type="email" placeholder="Email*" autocomplete="off" onblur="verifica2(this.value)">
+                    <input id="telefone" name="tel" type="text" placeholder="Tel*" autocomplete="off" onblur="verifica3(this.value)">
+                    <input  class="curso" name="curso" type="name" placeholder="Cursando atualmente" autocomplete="off">
+                    <select name="place" id="area">
+                        <option value="none" disabled selected>área pretendida</option>
+                        <option value="RJ">Vendas e marketing</option>
+                        <option value="SP">Freio</option>
+                        <option value="MG">Elétrica</option>
+                        <option value="ES">Suspensão e direção</option>
+                    </select>
+                </div>
+                   <p id="objetivo" style=" text-decoration: underline;">Objetivo</p>
+                    <textarea name="objetivo" id="obj"  style="resize: none" onblur="verifica4(this.value)"></textarea>
+                 
+                    
+                    
+                     
+                     <p class="notipergunta" style=" text-decoration: underline;"> Deseja receber notifcações?</p>
+                     <div class="notificacoes">
+                       
+                         <label for="noticacao" >Email</label>
+                         <input type="checkbox" id="notificacao" checked name="noticacao" onclick="return confere2()">
+                         <label for="noticacao">Whatsapp</label>
+                         <input type="checkbox" id="notificacao2" name="noticacao" onclick="return confere2()">
+                         <label for="noticacao">Linkedin</label>
+                         <input type="checkbox" id="notificacao3" name="noticacao" onclick="return confere2()">
+                         <label for="nenhumNot">Não receber notificações</label>
+                         <input type="checkbox" name="nenhumNot" id="nenhumNot"  onclick="return confere()">
+                         
+                         
+                        
+                     </div>
+                </form>
+            </main>
+            <input id="inscreva" type="submit" value="INSCREVA-SE">
+        </div>
+        
+    </section>
+    </div>
+    <div class="logo">
+        <img id="logo" src="./images/milogo.png" alt="logo">
+        <div class="box"><h3>PROCOBAJA</h3></div>
+    </div>
+   
+    
+    <script>
+     jQuery('input#telefone')
+        .mask('(99) 99999-9999')
+        
+        $("input").css("color", "white");   
+        $("#obj").css("color", "white");
+        
+
+$('.logo').click(function(){
+    $('.box').toggle('slide, slow');
+});
+
+$(document).ready(function(){
+  $('.box').hide('swing, slow');
+});  
+    </script>
+    <script>
+        function confere() {
+           if (document.getElementById('nenhumNot').checked = true) {
+                
+                document.getElementById('notificacao').checked = false;               
+                document.getElementById('notificacao2').checked = false;
+                document.getElementById('notificacao3').checked = false;   
+           }
+        }
+        function confere2() {
+            if (document.getElementById('nenhumNot').checked = true) {
+                (document.getElementById('nenhumNot').checked = false);
+            }
+           
+        }
+        </script>
+        <script>
+        
+        const fieldMessage = document.querySelector("name", "email", "telefone")
+
+    $("#name").on("keydown", function(){
+        if ($("#name").val().length > 5) {
+            $(this).addClass("valid").removeClass("invalid")
+        } else {
+            $(this).addClass("invalid").removeClass("valid")
+  }
+})
+    $("#email").on("keydown", function(){
+            if ($("#email").val().length > 10) {
+                $(this).addClass("valid").removeClass("invalid")
+            } else {
+                $(this).addClass("invalid").removeClass("valid")
+    }
+    })
+    $("#telefone").on("keydown", function(){
+            if ($("#telefone").val().length > 13) {
+                $(this).addClass("valid").removeClass("invalid")
+            } else {
+                $(this).addClass("invalid").removeClass("valid")
+    }
+    })
+    $('#area').change(function(){
+    $(this).css('color', 'white');
+    $(this).addClass("valid").removeClass("invalid")
+});
+   
+</script>
+   
+</body>
+</html>
